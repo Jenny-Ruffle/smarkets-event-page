@@ -6,7 +6,7 @@ export const Heading = createComponent(() => ({
     margin: 0,
     color: 'black',
     paddingBottom: '16px',
-    font: '36px/40px "Abril Fatface", cursive',
+    font: '36px/40px "Bree Serif", serif',
 }), 'h1')
 
 
@@ -16,7 +16,7 @@ export const SmallHeading = createComponent(({hover=true}) => ({
     margin: 0,
     color: 'black',
     paddingBottom: '16px',
-    font: '22px/26px "Abril Fatface", cursive',
+    font: '22px/26px "Bree Serif", serif',
     textDecoration: 'none',
     ':hover': {
         color: hover ? '#3c4a3c' : 'black',
