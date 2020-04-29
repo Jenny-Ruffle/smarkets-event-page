@@ -10,9 +10,6 @@ import EventPage from './pages/EventPage'
 
 const renderer = createRenderer()
 
-const AbrilFatfaceRegularFontFile = ['./static/fonts/AbrilFatface-Regular.ttf']
-renderer.renderFont('AbrilFatface', AbrilFatfaceRegularFontFile)
-
 function App() {
   return (
     <RendererProvider renderer={renderer}>

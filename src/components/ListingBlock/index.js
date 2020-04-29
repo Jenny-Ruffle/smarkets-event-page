@@ -1,5 +1,4 @@
 import React from "react";
-import { createComponent } from "react-fela";
 import { Link } from 'react-router-dom'
 import useFetch from "../../utils/useFetch";
 import {Prefix, SmallHeading, Paragraph} from '../Fonts'

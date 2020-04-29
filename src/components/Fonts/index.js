@@ -6,7 +6,7 @@ export const Heading = createComponent(() => ({
     margin: 0,
     color: 'black',
     paddingBottom: '16px',
-    font: '36px/40px AbrilFatface, serif',
+    font: '36px/40px "Abril Fatface", cursive',
 }), 'h1')
 
 
@@ -16,7 +16,7 @@ export const SmallHeading = createComponent(({hover=true}) => ({
     margin: 0,
     color: 'black',
     paddingBottom: '16px',
-    font: '22px/26px AbrilFatface, serif',
+    font: '22px/26px "Abril Fatface", cursive',
     textDecoration: 'none',
     ':hover': {
         color: hover ? '#3c4a3c' : 'black',
@@ -30,7 +30,7 @@ export const Paragraph = createComponent(() => ({
     margin: 0,
     color: 'black',
     paddingBottom: '16px',
-    font: '16px/20px Roboto, sans-serif'
+    font: '16px/20px "Raleway", sans-serif'
 }), 'p')
 
 
@@ -42,5 +42,5 @@ export const Prefix = createComponent(() => ({
     paddingBottom: '16px',
     color: 'black',
     textTransform: 'uppercase',
-    font: '10px/16px Roboto, sans-serif',
+    font: '10px/16px "Raleway", sans-serif',
 }), 'p')
