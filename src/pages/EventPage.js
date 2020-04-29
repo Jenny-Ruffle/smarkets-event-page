@@ -1,29 +1,46 @@
 import React from "react";
-import { createComponent } from "react-fela";
+import { Link } from 'react-router-dom'
 import useFetch from "../utils/useFetch";
+import { Heading } from '../components/Fonts'
+import CenterContainer from '../components/CenterContainer'
+import PageWrapper from '../components/PageWrapper'
+import { SmallHeading, Paragraph, Prefix } from '../components/Fonts'
+import EventContainer from '../components/EventContainer'
 
-const flexContainer = () => ({
-  display: "flex",
-  flexWrap: "wrap",
-  justifyContent: "center",
-  margin: "24px 64px",
-  "@media (max-width: 768px)": {
-    margin: "24px",
-  },
-});
+const getDate = (startDate) => {
+  const date = startDate.split('-').reverse().join('/')
+  return date
+}
 
-const FlexContainer = createComponent(flexContainer, "div");
+const getStartTime = (startTime) => {
+  const timeString = startTime.split('T')[1]
+  const time = timeString.slice(0, 5)
+  return time
+}
 
-const EventPage = () => {
-  const res = useFetch(
-    "https://cors-anywhere.herokuapp.com/https://api.smarkets.com/v3/popular/event_ids/sport/football/"
-  );
-  console.log(res, res.popular_event_ids);
+const EventPage = ({match}) => {
+  const eventId = match.params.id 
+  const res = useFetch(`https://api.smarkets.com/v3/events/${eventId}/`);
+  const league = res && res.events[0].full_slug.split('/')[3]
+  const startTime = res && getStartTime(res.events[0].start_datetime)
+  const startDate= res && getDate(res.events[0].start_date)
+
   return (
-    <FlexContainer>
-       <div> Event Page </div>
-      {/* {data.map((item, index) => <div key={index}>{item}</div>)} */}
-    </FlexContainer>
+    <PageWrapper>
+      <Heading> Event Page </Heading>
+      <CenterContainer>
+        {!res && <div>Loading</div>}
+        {res && <EventContainer>
+          <Prefix>League: {league}</Prefix>
+          <SmallHeading hover={false}>Game: {res.events[0].name}</SmallHeading>
+          <Paragraph>Kickoff: {startTime}</Paragraph>
+          <Paragraph>Game date: {startDate}</Paragraph>
+        </EventContainer>}
+      </CenterContainer>
+      <Link style={{ textDecoration: 'none' }} to={'/'}>
+        <SmallHeading>Back</SmallHeading>
+      </Link>
+    </PageWrapper>
   );
 };
 
